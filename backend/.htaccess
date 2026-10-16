@@ -1,0 +1,11 @@
+# Route every /api/... request to index.php (Apache / XAMPP)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Block direct access to internal folders
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^.*/(config|lib|routes)/.*$
+</IfModule>
